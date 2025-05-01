@@ -1,0 +1,38 @@
+import { Link } from "react-router-dom";
+import {HiOutlineUser,HiOutlineShoppingBag,HiBars3BottomRight} from 'react-icons/hi2';
+
+const Navbar = () => {
+  return (
+    <>
+      <nav className="container mx-auto flex items-center justify-between py-4 px-6">
+        {/* left logo */}
+        <div className="text-2xl font-medium">
+          <Link to={"/"} className="text-2xl font-medium">Rabbit</Link>
+        </div>
+        {/* center navigation link */}
+        <div className="hidden md:flex space-x-6">
+          <Link to={'#'} className="text-gray-700 hover:text-black text-sm font-medium uppercase">Men</Link>
+          <Link to={'#'} className="text-gray-700 hover:text-black text-sm font-medium uppercase">Women</Link>
+          <Link to={'#'} className="text-gray-700 hover:text-black text-sm font-medium uppercase">Top Wear</Link>
+          <Link to={'#'} className="text-gray-700 hover:text-black text-sm font-medium uppercase">Bottom Wear</Link>
+        </div>
+        {/* right section */}
+        <div className="flex items-center space-x-4">
+          <Link to={"/profile"} className="hover:text-black">
+          <HiOutlineUser className="h-6 w-6 text-gray-700"></HiOutlineUser></Link>
+          <button className="relative hover:text-black">
+            <HiOutlineShoppingBag className="h-6 w-6 text-gray-700"></HiOutlineShoppingBag>
+            <span className="absolute -top-1 bg-rabbit-red text-white text-xs rounded-full py-0.5 px-2">4</span>
+          </button>
+          {/* search */}
+
+          <button className="md:hidden">
+            <HiBars3BottomRight className="h-6 w-6 text-gray-700"></HiBars3BottomRight>
+          </button>
+        </div>
+      </nav>
+    </>
+  )
+}
+
+export default Navbar
