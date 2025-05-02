@@ -1,4 +1,5 @@
 import { IoMdClose } from "react-icons/io";
+import CartContents from "../Cart/CartContents"
 
 const CartDrawer = ({drawerOpen,toggleCartDrawer}) => {
   
@@ -12,6 +13,7 @@ const CartDrawer = ({drawerOpen,toggleCartDrawer}) => {
       <div className="flex-grow p-4 overflow-y-auto">
         <h2 className="text-xl font-semibold mb-4">Your Cart</h2>
         {/* content card */}
+        <CartContents></CartContents>
       </div>
       {/* checkout button */}
       <div className="p-4 bg-white sticky bottom-0">
