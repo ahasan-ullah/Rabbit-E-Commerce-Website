@@ -101,7 +101,6 @@ const NewArrivals = () => {
   ];
 
   // scroll function
-
   const scroll = (direction) => {
     const scrollAmount = direction === "left" ? -300 : 300;
     scrollRef.current.scrollBy({ left: scrollAmount, behaviour: "smooth" });
@@ -126,17 +125,37 @@ const NewArrivals = () => {
     // })
   };
 
+  // dragging function
+  const handleMouseDown=(e)=>{
+    setIsDragging(true);
+    setStartX(e.pageX-scrollRef.current.offsetLeft);
+    setScrollLeft(scrollRef.current.scrollLeft);
+  }
+  const handleMouseMove=(e)=>{
+    if(!isDragging) return;
+    const x=e.pageX-scrollRef.current.offsetLeft;
+    const walk=x-startX;
+    scrollRef.current.scrollLeft=scrollLeft-walk;
+  }
+  const handleMouseUpOrLeave=()=>{
+    setIsDragging(false);
+  }
+
   useEffect(() => {
     const container = scrollRef.current;
 
     if (container) {
       container.addEventListener("scroll", updateScrollButtons);
       updateScrollButtons();
+      return()=>{
+        container.removeEventListener('scroll',updateScrollButtons);
+      }
     }
-  });
+  },[]);
 
   return (
-    <section className="container mx-auto text-center mb-10 relative">
+    <section className="py-16 px-4 lg:px-0">
+    <div className="container mx-auto text-center mb-10 relative">
       <h2 className="text-3xl font-bold mb-4">Explore New Arrivals</h2>
       <p className="text-lg text-gray-600 mb-8">
         Discover the latest style straight off the runway, freshly added to keep
@@ -174,7 +193,11 @@ const NewArrivals = () => {
       {/* scrollable content */}
       <div
         ref={scrollRef}
-        className="container mx-auto overflow-x-auto flex space-x-6 relative"
+        onMouseDown={handleMouseDown}
+        onMouseMove={handleMouseMove}
+        onMouseUp={handleMouseUpOrLeave}
+        onMouseLeave={handleMouseUpOrLeave}
+        className={`container mx-auto overflow-x-auto flex space-x-6 relative ${isDragging?"cursor-grabbing":"cursor-grab"}`}
       >
         {newArrivals.map((product) => (
           <div
@@ -185,6 +208,7 @@ const NewArrivals = () => {
               src={product.images[0]?.url}
               alt={product.images[0]?.altText}
               className="w-full h-[500px] object-cover rounded-lg"
+              draggable='false'
             />
             <div className="absolute bottom-0 left-0 right-0 backdrop-blur-md text-white p-4 rounded-b-lg">
               <Link to={`/product/${product._id}`} className="block">
@@ -195,6 +219,7 @@ const NewArrivals = () => {
           </div>
         ))}
       </div>
+    </div>
     </section>
   );
 };
