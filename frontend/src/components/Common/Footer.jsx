@@ -76,7 +76,7 @@ const Footer = () => {
           </div>
           <p className="text-gray-500">Call Us</p>
           <p>
-            <FiPhoneCall className="inline-block mr-2">0123-456789</FiPhoneCall>
+            <FiPhoneCall className="inline-block mr-2"></FiPhoneCall>0123-456789
           </p>
         </div>
       </div>
