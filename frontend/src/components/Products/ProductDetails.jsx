@@ -1,3 +1,5 @@
+import { useEffect, useState } from "react";
+
 const selectedProducts={
   name: "Stylish Jacket",
   price: 120,
@@ -19,6 +21,12 @@ const selectedProducts={
   ]
 }
 const ProductDetails = () => {
+  const [mainImage, setMainImage] = useState("");
+  useEffect(()=>{
+    if(selectedProducts.images.length > 0){
+      setMainImage(selectedProducts.images[0].url);
+    }
+  },[selectedProducts])
   return (
     <div className="p-6">
       <div className="max-w-6xl mx-auto bg-white p-8 rounded-lg">
@@ -30,14 +38,15 @@ const ProductDetails = () => {
                 key={index}
                 src={image.url}
                 alt={image.alt || `Thumbnail ${index + 1}`}
-                className="w-20 h-20 object-cover rounded-lg cursor-pointer border"
+                className={`w-20 h-20 object-cover rounded-lg cursor-pointer border ${mainImage === image.url ? 'border-black' : 'border-gray-300'}`}
+                onClick={() => setMainImage(image.url)}
               />
             ))}
           </div>
           {/* main image */}
           <div className="md:w-1/2">
             <div className="mb-4">
-              <img src={selectedProducts.images[0]?.url} alt="Main Product" className="w-full h-auto object-cover rounded-lg"/>
+              <img src={mainImage} alt="Main Product" className="w-full h-auto object-cover rounded-lg"/>
             </div>
           </div>
           {/* mobile images */}
