@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { toast } from "sonner";
 
 const selectedProducts={
   name: "Stylish Jacket",
@@ -26,7 +27,38 @@ const ProductDetails = () => {
     if(selectedProducts.images.length > 0){
       setMainImage(selectedProducts.images[0].url);
     }
-  },[selectedProducts])
+  },[selectedProducts]);
+
+  const [selectedSize,setSelectedSize] = useState("");
+  const [selectedColor,setSelectedColor] = useState("");
+  const [selectedQuantity,setSelectedQuantity] = useState(1);
+  const [isButtonDisabled,setIsButtonDisabled] = useState(false);
+
+  const handleQuantityChange=(action)=>{
+    if(action === "plus"){
+      setSelectedQuantity((prev)=>prev+1);
+    }
+    if(action === "minus" && selectedQuantity > 1){
+      setSelectedQuantity((prev)=>prev-1);
+    }
+  }
+
+  const handleAddToCart=()=>{
+    if(!selectedSize || !selectedColor){
+      toast.error("Please select size and color",{
+        duration: 1000,
+      });
+      return
+    }
+    setIsButtonDisabled(true);
+    setTimeout(()=>{
+      toast.success("Product added to cart",{
+        duration: 1000,
+      });
+      setIsButtonDisabled(false);
+    },500);
+  }
+
   return (
     <div className="p-6">
       <div className="max-w-6xl mx-auto bg-white p-8 rounded-lg">
@@ -87,7 +119,8 @@ const ProductDetails = () => {
                 {selectedProducts.colors.map((color) => (
                   <button
                     key={color}
-                    className={'w-8 h-8 rounded-full border'}
+                    onClick={() => setSelectedColor(color)}
+                    className={`w-8 h-8 rounded-full border ${selectedColor === color ? 'border-black border-4' : 'border-gray-300'}`}
                     style={{ backgroundColor: color.toLowerCase(),
                     filter: 'brightness(0.5)'}}
                   ></button>
@@ -100,7 +133,8 @@ const ProductDetails = () => {
                 {selectedProducts.sizes.map((size) => (
                   <button
                     key={size}
-                    className="px-4 py-2 border rounded"
+                    onClick={() => setSelectedSize(size)}
+                    className={`px-4 py-2 border rounded ${selectedSize === size ? 'bg-black text-white' : ''}`}
                   >
                     {size}
                   </button>
@@ -110,12 +144,16 @@ const ProductDetails = () => {
             <div className="mb-6">
               <p className="text-gray-700">Quantity:</p>
               <div className="flex items-center space-x-4 mt-2">
-                <button className="px-2 bg-gray-200 text-lg rounded">-</button>
-                <span className="text-lg">1</span>
-                <button className="px-2 bg-gray-200 text-lg rounded">+</button>
+                <button onClick={()=>handleQuantityChange("minus")} className="px-2 bg-gray-200 text-lg rounded">-</button>
+                <span className="text-lg">{selectedQuantity}</span>
+                <button onClick={()=>handleQuantityChange("plus")} className="px-2 bg-gray-200 text-lg rounded">+</button>
               </div>
             </div>
-            <button className="bg-black text-white py-2 px-6 rounded w-full mb-4">ADD TO CART</button>
+            <button onClick={handleAddToCart} 
+            disabled={isButtonDisabled}
+            className={`bg-black text-white py-2 px-6 rounded w-full mb-4 ${isButtonDisabled?"cursor-not-allowed opacity-50": "hover:bg-gray-900"}`}>
+              {isButtonDisabled ? "Adding..." : "Add to Cart"}
+            </button>
             <div className="mt-10 text-gray-700">
               <h3 className="text-xl font-bold mb-4">Characterstics:</h3>
               <table className="w-full text-left text-sm text-gray-600">
