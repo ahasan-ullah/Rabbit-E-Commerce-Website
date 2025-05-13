@@ -2,6 +2,7 @@ import {BrowserRouter, Route, Routes} from 'react-router-dom';
 import UserLayout from './components/Layout/UserLayout';
 import Home from './pages/Home';
 import { Toaster } from 'sonner';
+import Login from './pages/Login';
 const App = () => {
   return (
     <BrowserRouter>
@@ -10,6 +11,7 @@ const App = () => {
       {/* User Route */}
       <Route path='/' element={<UserLayout/>}>
         <Route index element={<Home></Home>}></Route>
+        <Route path='/login' element={<Login></Login>}></Route>
       </Route>
       {/* Admin Route */}
       <Route></Route>
