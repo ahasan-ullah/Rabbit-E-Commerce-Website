@@ -1,6 +1,8 @@
 import { useEffect, useRef, useState } from "react";
 import { FaFilter } from "react-icons/fa";
 import FilterSidebar from "../components/Products/FilterSidebar";
+import SortOptions from "../components/Products/SortOptions";
+import ProductGrid from "../components/Products/ProductGrid";
 
 const CollectonPage = () => {
   const [products, setProducts] = useState([]);
@@ -140,7 +142,11 @@ const CollectonPage = () => {
       </div>
       <div className="flex-grow p-4">
         <h2 className="text-2xl uppercase mb-4">All Collection</h2>
-        {/*  */}
+        {/* sort */}
+        <SortOptions></SortOptions>
+
+        {/* product grid */}
+        <ProductGrid products={products}></ProductGrid>
       </div>
     </div>
   );
