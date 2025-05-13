@@ -5,6 +5,7 @@ import { Toaster } from 'sonner';
 import Login from './pages/Login';
 import Register from './pages/Register';
 import Profile from './pages/Profile';
+import CollectonPage from './pages/CollectonPage';
 const App = () => {
   return (
     <BrowserRouter>
@@ -16,6 +17,7 @@ const App = () => {
         <Route path='/login' element={<Login></Login>}></Route>
         <Route path='/register' element={<Register></Register>}></Route>
         <Route path='/profile' element={<Profile></Profile>}></Route>
+        <Route path='collection/:collection' element={<CollectonPage></CollectonPage>}></Route>
       </Route>
       {/* Admin Route */}
       <Route></Route>
