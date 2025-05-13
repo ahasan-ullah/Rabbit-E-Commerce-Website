@@ -111,6 +111,46 @@ const FilterSidebar = () => {
           ))
         }
       </div>
+
+      {/* material */}
+      <div className="mb-6">
+        <label className="block text-gray-600 font-medium mb-2">Material</label>
+        {
+          materials.map((material) => (
+            <div key={material} className="flex items-center mb-1">
+              <input
+                type="checkbox"
+                name="size"
+                className="mr-2 h-4 w-4 text-blue-500 border-gray-300 focus:ring-blue-400"
+              />
+              <span className="text-gray-700">
+                {material}
+              </span>
+            </div>
+          ))
+        }
+      </div>
+
+      {/* brand */}
+      <div className="mb-6">
+        <label className="block text-gray-600 font-medium mb-2">Brand</label>
+        {
+          brands.map((brand) => (
+            <div key={brand} className="flex items-center mb-1">
+              <input
+                type="checkbox"
+                name="size"
+                className="mr-2 h-4 w-4 text-blue-500 border-gray-300 focus:ring-blue-400"
+              />
+              <span className="text-gray-700">
+                {brand}
+              </span>
+            </div>
+          ))
+        }
+      </div>
+
+
     </div>
   )
 }
