@@ -94,7 +94,6 @@ const FilterSidebar = () => {
       }
     })
     navigate(`?${params.toString()}`);
-    console.log(params.toString());
   }
 
   return (
@@ -111,6 +110,7 @@ const FilterSidebar = () => {
               value={category}
               onChange={handleFilterChange}
               name="category"
+              checked={filters.category === category}
               className="mr-2 h-4 w-4 text-blue-500 border-gray-300 focus:ring-blue-500"
             />
             <span className="text-gray-700">{category}</span>
@@ -128,6 +128,7 @@ const FilterSidebar = () => {
               value={gender}
               onChange={handleFilterChange}
               name="gender"
+              checked={filters.gender===gender}
               className="mr-2 h-4 w-4 text-blue-500 border-gray-300 focus:ring-blue-500"
             />
             <span className="text-gray-700">{gender}</span>
@@ -144,8 +145,9 @@ const FilterSidebar = () => {
               key={color}
               name="color"
               value={color}
+              checked={filters.color===color}
               onClick={handleFilterChange}
-              className="w-8 h-8 rounded-full border border-gray-300 cursor-pointer transition hover:scale-105"
+              className={`w-8 h-8 rounded-full border border-gray-300 cursor-pointer transition hover:scale-105 ${filters.color===color?"ring-2 ring-blue-500":""}`}
               style={{ background: color.toLocaleLowerCase() }}
             ></button>
           ))}
@@ -161,6 +163,7 @@ const FilterSidebar = () => {
               type="checkbox"
               name="size"
               value={size}
+              checked={filters.size.includes(size)}
               onChange={handleFilterChange}
               className="mr-2 h-4 w-4 text-blue-500 border-gray-300 focus:ring-blue-400"
             />
@@ -177,6 +180,7 @@ const FilterSidebar = () => {
             <input
               type="checkbox"
               value={material}
+              checked={filters.material.includes(material)}
               onChange={handleFilterChange}
               name="material"
               className="mr-2 h-4 w-4 text-blue-500 border-gray-300 focus:ring-blue-400"
@@ -194,6 +198,7 @@ const FilterSidebar = () => {
             <input
               type="checkbox"
               value={brand}
+              checked={filters.brand.includes(brand)}
               onChange={handleFilterChange}
               name="brand"
               className="mr-2 h-4 w-4 text-blue-500 border-gray-300 focus:ring-blue-400"
@@ -210,7 +215,6 @@ const FilterSidebar = () => {
         </label>
         <input
           type="range"
-
           min={0}
           max={100}
           className="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer"
