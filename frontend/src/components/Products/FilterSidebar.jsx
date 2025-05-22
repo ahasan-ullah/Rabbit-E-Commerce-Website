@@ -226,7 +226,7 @@ const FilterSidebar = () => {
           max={100}
           value={priceRange[1]}
           onChange={handlePriceChange}
-          className="w-full cursor-pointer h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer"
+          className="w-full cursor-pointer h-2 bg-gray-200 rounded-lg appearance-none"
         />
         <div className="flex justify-between text-gray-600 mt-2">
           <span>$0</span>
