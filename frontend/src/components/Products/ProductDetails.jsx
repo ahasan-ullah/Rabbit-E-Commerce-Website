@@ -71,7 +71,7 @@ const similarProducts=[
 ]
 
 const ProductDetails = () => {
-  const [mainImage, setMainImage] = useState("");
+  const [mainImage, setMainImage] = useState(null);
   useEffect(()=>{
     if(selectedProducts.images.length > 0){
       setMainImage(selectedProducts.images[0].url);
