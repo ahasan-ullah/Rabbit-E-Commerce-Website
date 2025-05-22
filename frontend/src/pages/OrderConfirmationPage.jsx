@@ -73,9 +73,20 @@ const OrderConfirmationPage = () => {
                       <p className="text-md">${item.price}</p>
                       <div className="text-sm text-gray-500">Qty: {item.quantity}</div>
                     </div>
-                  </div>
-                ))
-              }
+                  </div>))}
+            </div>
+            {/* payment and delivery info */}
+            <div className="grid grid-cols-2 gap-8">
+              <div>
+                <h4 className="text-lg font-semibold mb-2">Payment</h4>
+                <p className="text-gray-600">Paypal</p>
+              </div>
+              {/* deliver info */}
+              <div>
+                <h4 className="text-lg font-semibold mb-2">Delivery</h4>
+                <p className="text-gray-600">{checkout.shippingAddress.address}</p>
+                <p className="text-gray-600">{checkout.shippingAddress.city}, {" "} {checkout.shippingAddress.country}</p>
+              </div>
             </div>
           </div>
         )
