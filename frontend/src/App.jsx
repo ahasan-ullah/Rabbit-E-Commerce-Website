@@ -10,6 +10,7 @@ import ProductDetails from './components/Products/ProductDetails';
 import Checkout from './components/Cart/Checkout';
 import OrderConfirmationPage from './pages/OrderConfirmationPage';
 import OrderDetailsPage from './pages/OrderDetailsPage';
+import MyOrdersPage from './pages/MyOrdersPage';
 const App = () => {
   return (
     <BrowserRouter>
@@ -26,6 +27,7 @@ const App = () => {
         <Route path='/checkout'element={<Checkout></Checkout>}></Route>
         <Route path='/order-confirmation' element={<OrderConfirmationPage></OrderConfirmationPage>}></Route>
         <Route path='/order/:id' element={<OrderDetailsPage></OrderDetailsPage>}></Route>
+        <Route path='/my-orders' element={<MyOrdersPage></MyOrdersPage>}></Route>
       </Route>
       {/* Admin Route */}
       <Route></Route>
