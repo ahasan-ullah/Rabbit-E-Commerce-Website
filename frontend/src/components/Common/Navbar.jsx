@@ -34,7 +34,7 @@ const Navbar = () => {
         <div className="flex items-center space-x-4">
           <Link to={"/profile"} className="hover:text-black">
           <HiOutlineUser className="h-6 w-6 text-gray-700"></HiOutlineUser></Link>
-          <button onClick={toggleCartDrawer} className="relative hover:text-black">
+          <button onClick={toggleCartDrawer} className="relative hover:text-black cursor-pointer">
             <HiOutlineShoppingBag className="h-6 w-6 text-gray-700"></HiOutlineShoppingBag>
             <span className="absolute -top-1 bg-rabbit-red text-white text-xs rounded-full py-0.5 px-2">4</span>
           </button>

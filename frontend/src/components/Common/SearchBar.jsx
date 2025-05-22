@@ -17,14 +17,14 @@ const SearchBar = () => {
         <div className="relative w-1/2">
         <input onChange={(e)=>setSearchTerm(e.target.value)} type="text" placeholder="Search" value={searchTerm} className="bg-gray-100 px-4 py-2 pl-2 pr-12 rounded-lg focus:outline-none w-full placeholder:text-gray-700"/>
         {/* search icon */}
-        <button type="submit" className="absolute right-2 top-1/2 transform -translate-y-1/2 text-gray-600 hover:text-gray-800"><HiMagnifyingGlass></HiMagnifyingGlass></button>
+        <button type="submit" className="absolute right-2 top-1/2 transform -translate-y-1/2 text-gray-600 hover:text-gray-800 cursor-pointer"><HiMagnifyingGlass></HiMagnifyingGlass></button>
         </div>
         {/* close button */}
         <button onClick={handleSearchToggle} type="button" className="absolute right-4 top-1/2 transform -translate-y-1/2 text-gray-600 hover:to-gray-800">
           <HiMiniXMark className="h-6 w-6"></HiMiniXMark>
         </button>
       </form>):(
-        <button onClick={handleSearchToggle}><HiMagnifyingGlass className="h-6 w-6"></HiMagnifyingGlass></button>
+        <button onClick={handleSearchToggle}><HiMagnifyingGlass className="h-6 w-6 cursor-pointer"></HiMagnifyingGlass></button>
       )}
     </div>
   )
