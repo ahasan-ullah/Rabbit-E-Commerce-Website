@@ -7,6 +7,7 @@ import Register from './pages/Register';
 import Profile from './pages/Profile';
 import CollectonPage from './pages/CollectonPage';
 import ProductDetails from './components/Products/ProductDetails';
+import Checkout from './components/Cart/Checkout';
 const App = () => {
   return (
     <BrowserRouter>
@@ -20,6 +21,7 @@ const App = () => {
         <Route path='/profile' element={<Profile></Profile>}></Route>
         <Route path='collection/:collection' element={<CollectonPage></CollectonPage>}></Route>
         <Route path='product/:id' element={<ProductDetails></ProductDetails>}></Route>
+        <Route path='/checkout'element={<Checkout></Checkout>}></Route>
       </Route>
       {/* Admin Route */}
       <Route></Route>
