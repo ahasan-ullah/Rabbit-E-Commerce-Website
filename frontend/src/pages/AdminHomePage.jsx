@@ -31,6 +31,39 @@ const AdminHomePage = () => {
         </div>
       </div>
       {/* order tables */}
+      <div className="mt-6">
+        <h2 className="text-2xl font-bold mb-4">Recent Orders</h2>
+        <div className="overflow-x-auto">
+          <table className="min-w-full text-left text-gray-500">
+            <thead className="bg-gray-100 text-xs uppercase text-gray-700">
+              <tr>
+                <th className="py-3 px-4">Order Id</th>
+                <th className="py-3 px-4">User</th>
+                <th className="py-3 px-4">Total Price</th>
+                <th className="py-3 px-4">Status</th>
+              </tr>
+            </thead>
+            <tbody className="">
+              {
+                orders.length>0?(
+                  orders.map(order=>(
+                    <tr key={order._id} className="border-b hover:bg-gray-50 cursor-pointer">
+                      <td className="p-4">{order._id}</td>
+                      <td className="p-4">{order.user.name}</td>
+                      <td className="p-4">{order.totalPrice}</td>
+                      <td className="p-4">{order.status}</td>
+                    </tr>
+                  ))
+                ):(
+                  <td colSpan={4} className="p-4 text-center text-gray-500">
+                    No recent orders found
+                  </td>
+                )
+              }
+            </tbody>
+          </table>
+        </div>
+      </div>
     </div>
   )
 }
