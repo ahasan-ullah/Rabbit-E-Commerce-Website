@@ -1,31 +1,27 @@
 import { useEffect, useRef, useState } from "react";
 import { FaFilter } from "react-icons/fa";
 import FilterSidebar from "../components/Products/FilterSidebar";
-import SortOptions from "../components/Products/SortOptions";
-import ProductGrid from "../components/Products/ProductGrid";
 
 const CollectonPage = () => {
   const [products, setProducts] = useState([]);
-  const sidebarRef = useRef(null);
-  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+  const sidebarRef=useRef(null);
+  const [isSidebarOpen,setIsSidebarOpen]=useState(false);
 
-  const toggleSidebar = () => {
+  const toggleSidebar=()=>{
     setIsSidebarOpen(!isSidebarOpen);
-  };
+  }
 
-  useEffect(() => {
-    const handleClickOutside = (e) => {
-      if (sidebarRef.current && !sidebarRef.current.contains(e.target)) {
-        setIsSidebarOpen(false);
-      }
-    };
+  const handleClickOutside=(e)=>{
+    if(sidebarRef.current && !sidebarRef.current.contains(e.target)){
+      setIsSidebarOpen(false);
+    }
+  }
 
-    document.addEventListener("mousedown", handleClickOutside);
+  useEffect(()=>{
+    document.addEventListener("mousedown",handleClickOutside);
 
-    return () => {
-      document.removeEventListener("mousedown", handleClickOutside);
-    };
-  }, []);
+    document.removeEventListener("mousedown",handleClickOutside)
+  },[])
 
   useEffect(() => {
     setTimeout(() => {
@@ -120,33 +116,21 @@ const CollectonPage = () => {
         },
       ];
       setProducts(fetchedProducts);
-    }, 1000);
-  }, []);
-  return (
+    },1000);
+  },[])
+  return(
     <div className="flex flex-col lg:flex-row">
       {/* mobile filter button */}
-      <button
-        onClick={toggleSidebar}
-        className="lg:hidden border p-2 flex justify-center items-center"
-      >
+      <button onClick={toggleSidebar} className="lg:hidden border p-2 flex justify-center items-center">
         <FaFilter className="r-2"></FaFilter>Filters
       </button>
       {/* filter sidebar */}
-      <div
-        className={`${
-          isSidebarOpen ? "translate-x-0" : "-translate-x-full"
-        } fixed inset-y-0 z-50 left-0 w-64 bg-white overflow-x-auto transition-transform duration-300 lg:static lg:translate-x-0`}
-        ref={sidebarRef}
-      >
+      <div className={`${isSidebarOpen? "translate-x-0":"-translate-x-full"} fixed inset-y-0 z-50 left-0 w-64 bg-white overflow-x-auto transition-transform duration-300 lg:static lg: translate-x-0`} ref={sidebarRef}>
         <FilterSidebar></FilterSidebar>
       </div>
       <div className="flex-grow p-4">
         <h2 className="text-2xl uppercase mb-4">All Collection</h2>
-        {/* sort */}
-        <SortOptions></SortOptions>
-
-        {/* product grid */}
-        <ProductGrid products={products}></ProductGrid>
+        {/*  */}
       </div>
     </div>
   );
