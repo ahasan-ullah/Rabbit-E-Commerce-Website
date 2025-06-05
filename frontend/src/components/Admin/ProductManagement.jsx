@@ -37,7 +37,7 @@ const ProductManagement = () => {
                     <td className="p-4">{product.price}</td>
                     <td className="p-4">{product.sku}</td>
                     <td className="p-4">
-                      <Link to={`/admin/products/${product._id}`} className="text-white bg-yellow-500 px-2 py-1 rounded mr-2 hover:bg-yellow-600">Edit</Link>
+                      <Link to={`/admin/products/${product._id}/edit`} className="text-white bg-yellow-500 px-2 py-1 rounded mr-2 hover:bg-yellow-600">Edit</Link>
                       <button className="bg-red-500 text-white px-2 py-1 rounded hover:bg-red-600" onClick={()=>{handleDelete(product._id)}}>Delete</button>
                     </td>
                   </tr>
