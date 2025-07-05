@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 const bycrypt = require("bcryptjs");
 
-const userSchema = new mongoose.Schema(
+const userSchema=new mongoose.Schema(
   {
     name: {
       type: String,
@@ -28,7 +28,7 @@ const userSchema = new mongoose.Schema(
   },
   {
     timestamps: true,
-  }
+  } 
 );
 
 

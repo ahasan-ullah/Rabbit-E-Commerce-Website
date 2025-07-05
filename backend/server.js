@@ -2,6 +2,7 @@ const express=require('express');
 const cors=require('cors');
 const dotenv=require('dotenv');
 const connectDB=require('./config/db');
+const userRoutes=require('./routes/userRoutes');
 
 const app=express();
 app.use(express.json());
@@ -14,6 +15,11 @@ connectDB();
 
 app.get('/',(req,res)=>{
   res.send('Welcome to the rabbit api!');
+})
+
+// api
+app.use('/api/users',async(req,res)=>{
+  
 })
 
 app.listen(PORT,()=>{
